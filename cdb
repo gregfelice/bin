@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo 
+
+USER=$1
+DATABASE=$1
+PASSWORD=$2
+
+CMD="CREATE ROLE $USER WITH SUPERUSER PASSWORD '$PASSWORD';"
+
+echo $CMD
+
+/usr/bin/psql --command "$CMD"
+
+/usr/bin/createdb -O $USER $DATABASE
+
